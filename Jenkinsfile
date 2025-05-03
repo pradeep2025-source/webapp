@@ -71,7 +71,7 @@ pipeline {
         stage('Deploy via SSH') {
             steps {
                     sh '''
-                        ssh -i /home/ubuntu/Docker.pem  ubuntu@172.31.20.74   'kubctl apply -f /var/lib/jenkins/workspace/k8s/my-webapp/deployment.yml'
+                        ssh -i /home/ubuntu/Docker.pem  ubuntu@172.31.20.74   'kubectl apply -f /var/lib/jenkins/workspace/k8s/my-webapp/deployment.yml'
 
                     '''
                 }
