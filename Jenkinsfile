@@ -74,8 +74,8 @@ pipeline {
                         sudo cp -r /home/ubuntu/Docker.pem /var/lib/jenkins/Docker.pem
                         sudo chown jenkins:jenkins /var/lib/jenkins/Docker.pem
                         sudo chmod 400 /var/lib/jenkins/Docker.pem
-                        scp -i /var/lib/jenkins/Docker.pem -r /var/lib/jenkins/workspace/k8s/my-webapp ubuntu@172.31.20.74:/home/ubuntu/
-                        sudo -u jenkins ssh -i /var/lib/jenkins/Docker.pem ubuntu@172.31.20.74  'kubectl apply --validate=false -f /home/ubuntu/my-webapp/deployment.yml'
+                        scp -i /var/lib/jenkins/Docker.pem -r /var/lib/jenkins/workspace/k8s/my-webapp ubuntu@172.31.20.74:/root
+                        sudo -u jenkins ssh -i /var/lib/jenkins/Docker.pem ubuntu@172.31.20.74  'kubectl apply --validate=false -f /root/my-webapp/deployment.yml'
 
                     '''
                 }
