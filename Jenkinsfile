@@ -66,6 +66,19 @@ pipeline {
                  """
              }
              } 
-           }
+        }
+        
+        stage('Deploy via SSH') {
+            steps {
+                sshagent(['remote-ssh']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.74 '
+                            kubectl apply -f deployment.yaml
+                        '
+                    '''
+                }
+            }
+        }
+
     }
 }
