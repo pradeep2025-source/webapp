@@ -41,7 +41,7 @@ pipeline {
        stage('Build Docker Image') {
            steps {
                dir('my-webapp') {
-                   sh 'docker build -t pradeepbrucelee/Frontend:${BUILD_NUMBER} .'
+                   sh 'docker build -t pradeepbrucelee/frontend:${BUILD_NUMBER} .'
                }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-token', variable: 'dockerhub_token')]) {
                         sh 'docker login -u pradeepbrucelee -p ${dockerhub_token}'
-                        sh 'docker push pradeepbrucelee/Frontend:${BUILD_NUMBER}'
+                        sh 'docker push pradeepbrucelee/frontend:${BUILD_NUMBER}'
                         echo 'Docker Image Pushed to Docker Hub'
                     }
                  }
