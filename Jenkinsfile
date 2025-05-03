@@ -46,11 +46,12 @@ pipeline {
         stage('Update Deployment File') {
           environment {
             GIT_REPO_NAME = "webapp"
-            GIT_USER_NAME = "pradeepbrucelee"
+            GIT_USER= "pradeepbrucelee"
+            
           }
           steps {
             echo 'Update Deployment File'
-            withCredentials([string(credentialsId: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd')]) {
+            withCredentials([string(credentialsId: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd', usernameVariable: 'GIT_USER', passwordVariable: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd')]) {
               sh """
                 # Configure Git
                 # git config user.email "harikumar.cloud@gmail.com"
@@ -62,10 +63,10 @@ pipeline {
                 # Commit and push
                 git add my-webapp/deployment.yml
                 git commit -m "Update deployment image to version ${BUILD_NUMBER}" || echo "No changes to commit"
-                git push https://github.com/pradeep2025-source/webapp.git HEAD:main
+                git push https://${GIT_USER}:${5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd}@github.com/${GIT_USER}/${GIT_REPO_NAME}.git HEAD:main
                  """
-             }
-             } 
-           }
+              }
+            } 
+        }
     }
 }
