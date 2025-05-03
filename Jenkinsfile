@@ -23,7 +23,7 @@ pipeline {
        stage('Build Docker Image') {
            steps {
                dir('my-webapp') {
-                   sh 'docker build -t pradeepbrucelee/frontend:${BUILD_NUMBER} .'
+                   sh 'sudo docker build -t pradeepbrucelee/frontend:${BUILD_NUMBER} .'
                }
             }
         }
