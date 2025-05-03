@@ -1,11 +1,6 @@
 pipeline {
     agent any
  
-    environment {
-        GIT_REPO_NAME = "webapp"
-        GIT_USER_NAME = "Hariteja234"
-    }
- 
     stages {
         stage('Code Checkout with checkout') {
             steps {
@@ -15,19 +10,6 @@ pipeline {
                         credentialsId: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd']]])
             }
         }
- 
-       /* stage('SonarQube Scan') {
-            steps {
-                // Navigate to the correct directory where pom.xml exists
-                dir('my-webapp') {
-                    sh '''
-                        mvn sonar:sonar \\
-                        -Dsonar.host.url=http://172.20.61.65:9000/ \\
-                        -Dsonar.login=squ_37dbfb0046edf20083ecec00b7e45c7d2792e63b
-                    '''
-                }
-            }
-        }*/
  
         stage('Build Artifact') {
             steps {
@@ -50,7 +32,7 @@ pipeline {
             steps {
                 script {
 
-                       sh 'sudo docker login -u pradeepbrucelee -p chmode@123'
+                        sh 'sudo docker login -u pradeepbrucelee -p Chmode@123'
                         sh 'sudo docker push pradeepbrucelee/frontend:${BUILD_NUMBER}'
                         echo 'Docker Image Pushed to Docker Hub'
                   /*  withCredentials([string(credentialsId: 'dockerhub-token', variable: 'dockerhub-token')]) {
