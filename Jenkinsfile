@@ -46,7 +46,7 @@ pipeline {
         stage('Update Deployment File') {
           environment {
             GIT_REPO_NAME = "webapp"
-            GIT_USER_NAME = "pradeepbrucelee"
+            GIT_USER_NAME = "pradeep2025-source"
           }
           steps {
             echo 'Update Deployment File'
