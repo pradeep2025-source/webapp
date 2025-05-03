@@ -50,7 +50,7 @@ pipeline {
           }
           steps {
             echo 'Update Deployment File'
-            withCredentials([string(credentialsId: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd', variable: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd')]) {
+            withCredentials([string(credentialsId: '5bf9bcf1-a7f6-4a2e-8859-c8f510a7cadd')]) {
               sh """
                 # Configure Git
                 # git config user.email "harikumar.cloud@gmail.com"
@@ -62,7 +62,7 @@ pipeline {
                 # Commit and push
                 git add my-webapp/deployment.yml
                 git commit -m "Update deployment image to version ${BUILD_NUMBER}" || echo "No changes to commit"
-                git push https://${github}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
+                git push https://github.com/pradeep2025-source/webapp.git HEAD:main
                  """
              }
              } 
