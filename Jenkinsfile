@@ -50,8 +50,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-token', variable: 'dockerhub_token')]) {
-                        sh 'docker login -u pradeepbrucelee -p ${dockerhub_token}'
-                        sh 'docker push pradeepbrucelee/frontend:${BUILD_NUMBER}'
+                        sh 'sudo docker login -u pradeepbrucelee -p ${dockerhub_token}'
+                        sh 'sudo docker push pradeepbrucelee/frontend:${BUILD_NUMBER}'
                         echo 'Docker Image Pushed to Docker Hub'
                     }
                  }
