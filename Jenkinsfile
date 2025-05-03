@@ -74,7 +74,7 @@ pipeline {
                         sudo cp -r /home/ubuntu/Docker.pem /var/lib/jenkins/Docker.pem
                         sudo chown jenkins:jenkins /var/lib/jenkins/Docker.pem
                         sudo chmod 400 /var/lib/jenkins/Docker.pem
-                        ssh -i /var/lib/jenkins/Docker.pem  ubuntu@172.31.20.74   'kubectl apply -f /var/lib/jenkins/workspace/k8s/my-webapp/deployment.yml'
+                        sudo -u jenkins ssh -i /var/lib/jenkins/Docker.pem ubuntu@172.31.20.74  'kubectl apply -f /var/lib/jenkins/workspace/k8s/my-webapp/deployment.yml'
 
                     '''
                 }
